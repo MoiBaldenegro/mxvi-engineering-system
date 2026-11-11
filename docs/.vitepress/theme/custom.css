@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Documentation theme: VitePress dressed with the MXVI look. Values come from
+   the synced copy of the MXVI design system (theme/mxvi/tokens.css).
+   ========================================================================== */
+
+:root,
+.dark {
+  --vp-c-brand-1: var(--color-accent);
+  --vp-c-brand-2: var(--color-accent-hover);
+  --vp-c-brand-3: var(--color-logo-purple);
+  --vp-c-brand-soft: color-mix(in srgb, var(--color-accent) 14%, transparent);
+
+  --vp-c-bg: var(--color-background);
+  --vp-c-bg-alt: #05050b;
+  --vp-c-bg-elv: var(--color-surface);
+  --vp-c-bg-soft: var(--color-surface);
+  --vp-c-gutter: var(--color-background);
+
+  --vp-c-border: var(--color-border-strong);
+  --vp-c-divider: var(--color-border);
+  --vp-c-gutter: var(--color-border);
+
+  --vp-c-text-1: var(--color-text);
+  --vp-c-text-2: var(--color-text-secondary);
+  --vp-c-text-3: #8a8a99;
+
+  --vp-c-default-soft: var(--color-surface);
+  --vp-code-bg: var(--color-surface);
+  --vp-code-block-bg: var(--color-surface);
+  --vp-code-color: var(--color-accent-hover);
+
+  --vp-font-family-base: var(--font-sans);
+  --vp-font-family-mono: var(--font-mono);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-image-background-image: radial-gradient(circle, var(--color-glow), transparent 68%);
+  --vp-home-hero-image-filter: blur(52px);
+
+  --vp-button-brand-bg: var(--color-background);
+  --vp-button-brand-border: var(--color-accent);
+  --vp-button-brand-text: var(--color-text);
+  --vp-button-brand-hover-bg: var(--color-background);
+  --vp-button-brand-hover-border: var(--color-accent-hover);
+  --vp-button-brand-hover-text: var(--color-text);
+  --vp-button-alt-bg: transparent;
+  --vp-button-alt-border: var(--color-border-strong);
+  --vp-button-alt-text: var(--color-text);
+  --vp-button-alt-hover-bg: var(--color-surface);
+  --vp-button-alt-hover-border: var(--color-accent);
+  --vp-button-alt-hover-text: var(--color-text);
+
+  --vp-custom-block-tip-bg: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --vp-custom-block-tip-border: var(--color-accent);
+}
+
+body { background: var(--color-background); }
+
+/* Square corners everywhere, like the website. */
+.VPButton,
+.VPFeature,
+.VPNavBarSearchButton,
+.DocSearch-Button,
+.VPLocalSearchBox .shell,
+.VPLocalSearchBox .search-bar,
+.custom-block,
+.vp-doc div[class*='language-'],
+.vp-code-group .tabs,
+.vp-doc :not(pre) > code,
+.VPSwitch,
+.VPSwitch .check,
+.VPFlyout .menu,
+.VPMenu,
+.VPDocOutlineDropdown,
+.VPSocialLink,
+.vp-doc table,
+.VPSidebarItem .item {
+  border-radius: 0 !important;
+}
+
+/* Glass navbar with a strong hairline. */
+.VPNavBar,
+.VPNavBar.has-sidebar .content-body,
+.VPNavBar:not(.home.top) .content-body {
+  background: var(--color-navbar) !important;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+.VPNavBar .divider-line { background-color: var(--color-border-strong) !important; }
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .text {
+  font-family: var(--font-display) !important;
+  font-synthesis: none;
+  font-weight: 400 !important;
+}
+
+/* Titles in Geist Pixel. */
+.vp-doc h1,
+.vp-doc h2,
+.VPHome .VPHero .text {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: 0;
+}
+.vp-doc h2 { border-top-color: var(--color-border); }
+.vp-doc h3 { letter-spacing: -.01em; }
+.vp-doc a { text-underline-offset: 3px; }
+
+/* Buttons: 2px plum outline (primary) and strong hairline (secondary). */
+.VPButton.brand { border-width: 2px; }
+.VPButton.brand:hover { box-shadow: 0 0 21px var(--color-glow); }
+
+/* Home hero: the official MXVI logo replaces the typeset name. The text
+   stays in the <h1> for screen readers and search engines. */
+.VPHome .VPHero .name {
+  display: block;
+  height: 48px;
+  aspect-ratio: 2048 / 716;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: url('/brand/mxvi-logo.svg') no-repeat center / contain;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+@media (min-width: 640px) { .VPHome .VPHero .name { height: 64px; } }
+@media (min-width: 960px) { .VPHome .VPHero .name { height: 72px; background-position: left center; } }
+.VPHome .VPHero .text { max-width: 760px; }
+
+/* Home background: hero gradient with the dot grain of the website. */
+.VPHome {
+  background:
+    radial-gradient(color-mix(in srgb, var(--color-text) 3%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at top right, var(--color-hero-top) 0%, var(--color-hero-mid) 35%, var(--color-hero-bottom) 100%);
+  background-size: 14px 14px, auto;
+}
+
+/* Feature cards: surface + hairline, accent border and lift on hover. */
+.VPFeature {
+  border: 1px solid var(--color-border) !important;
+  background: var(--color-surface) !important;
+  box-shadow: var(--shadow-card-rest);
+  transition: var(--transition-default);
+}
+.VPFeature:hover {
+  border-color: var(--color-accent) !important;
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+.VPFeature .title { font-family: var(--font-display); font-weight: 400; font-synthesis: none; letter-spacing: .04em; text-transform: uppercase; }
+
+.vp-doc div[class*="language-"] { border: 1px solid var(--color-border); }
+.vp-doc table { display: table; width: 100%; }
+
+/* --- Spec tables ---------------------------------------------------------- */
+.mx-spec td:first-child { white-space: nowrap; color: var(--vp-c-text-2); }
+
+/* --- Raw Markdown links at the top of every page -------------------------- */
+.mxvi-markdown-source {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-bottom: 24px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-size: 13px;
+}
+.mxvi-markdown-source__label { color: var(--vp-c-text-3); font-family: var(--font-display); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.mxvi-markdown-source a { color: var(--color-accent); font-weight: 600; text-decoration: none; }
+.mxvi-markdown-source a:hover, .mxvi-markdown-source a:focus-visible { color: var(--color-accent-hover); text-decoration: underline; }
+.mxvi-markdown-source__path { margin-left: auto; color: var(--vp-c-text-3); font-size: 12px; overflow-wrap: anywhere; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* --- Engineering system pieces -------------------------------------------- */
+
+/* Level status in the levels map. */
+.es-status {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
+  font-family: var(--font-display);
+  font-synthesis: none;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.es-status--ready { border-color: var(--color-accent); color: var(--color-accent-hover); }
+
+/* Folder trees read better without line wrapping. */
+.vp-doc div.language-text pre { line-height: 1.5; }
+
+/* Path of an included reference file, flush on top of its code block. */
+.vp-doc .es-file {
+  margin: 20px 0 0;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+  background: var(--color-background);
+  color: var(--color-accent-hover);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.vp-doc .es-file + div[class*='language-'] { margin-top: 0; }
+

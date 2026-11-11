@@ -1,0 +1,26 @@
+{
+  "name": "mxvi-engineering-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Human- and AI-readable engineering standards for the MXVI ecosystem: architecture levels, conventions and reference code.",
+  "type": "module",
+  "scripts": {
+    "docs:prepare": "node scripts/prepare-docs.mjs",
+    "dev": "npm run docs:prepare && vitepress dev docs",
+    "build": "npm run docs:prepare && vitepress build docs",
+    "preview": "vitepress preview docs",
+    "docs:check": "node scripts/check-docs.mjs",
+    "examples:typecheck": "tsc -p examples/hexagonal-basic",
+    "examples:test": "node --import tsx --test \"examples/**/*.test.ts\"",
+    "examples:layers": "node tools/check-layers.mjs examples/hexagonal-basic/src",
+    "check": "npm run examples:typecheck && npm run examples:test && npm run examples:layers && npm run docs:check"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "archiver": "^7.0.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
+  }
+}
